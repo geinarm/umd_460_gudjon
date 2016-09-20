@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage[]{mcode}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+%\usepackage{lingmacros}
+%\usepackage{tree-dvips}
+%\usepackage{blindtext}
+%\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\title{CMSC 460 - HW1}
+\author{Gudjon Einar Magnusson}
+
+\maketitle
+
+\section{}
+
+The following code constructs a bit array $y$ by going through the series $2^{-1}, 2^{-2}, ... ,2^{-52}$ and subtracting $2^{-n}$ from $x$ if $x > 2^{-n}$. $y_{n} = 1$ if $x > 2^{-n}$, otherwise it is zero.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting{../mydec2bin.m}
+\end{minipage}
+
+\section{}
+
+\subsection{}
+
+\begin{description}
+	\item[x = 1; while 1+x > 1, x = x/2, pause(.02), end] \hfill \\
+	Divides $x$ by two and adds it to one until it underflows and the sum is no longer greater than $1$.\\
+This prints $53$ lines of output, the last two are $2^{-52}$ and $2^{-53}$. $2^{-53}$ is too small to be added to $1$.
+
+	\item[x = 1; while x+x > x, x = 2*x, pause(.02), end] \hfill \\
+	Multiplies $x$ by two and adds it to itself until $x$ overflows and the sum is no longer greater than $x$.\\
+This prints $1024$ lines of output, the last two are $2^{1023}$ and $Inf$.
+
+	\item[x = 1; while x+x > x, x = x/2, pause(.02), end] \hfill \\
+	Divides $x$ by two and adds it to itself until $x$ underflows and the sum is no longer greater than $1$.\\
+This prints $1075$ lines of output, the last two are $2^{-1074}$ and $0$. After gets below $2^{-1023}$ the number is no longer normalized.
+
+\end{description}
+
+\subsection{}
+
+\subsubsection{}
+
+$\mathcal{F}$ contains $ 2 \times (2^{11} - 2) \times 2^{52}$ elements. $2^{52}$ for every permutation of the mantissa, times $2^{11}$ for every permutation of the exponent except the two special values and times $2$ for the sign.
+
+\subsubsection{}
+
+$2^{52}$ elements are in the range $[1 \leq x < 2]$, one for every permutation of the mantissa while the exponent is $0+1023$. The faction is $\dfrac{2^{52}}{\lvert \mathcal{F} \rvert}$
+
+\subsubsection{}
+
+$2^{52}$ elements are in the range $[\dfrac{1}{64} \leq x < \dfrac{1}{32}]$, one for every permutation of the mantissa while the exponent is $-6+1023$. The faction is $\dfrac{2^{52}}{\lvert \mathcal{F} \rvert}$
+
+\subsubsection{}
+
+According to a random sample of a 100k numbers only about 85\% satisfy the logical relation $x \times \dfrac{1}{x} = 1$. Many numbers that look like $1$ are not actually equal to $1$.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting{../randtest.m}
+\end{minipage}
+
+\subsection{} 
+
+The condition for the loop is that $s+t$ does not equal $s$. When $t$ becomes small enough that $s+t = s$ the loop will end.
+
+\begin{description}
+	\item[$x=\pi/2$] \hfill \\
+	Accurate to within about $2.2 \times 10^{-16}$\\
+	Power series uses 11 terms.
+	\item[$x=11\pi/2$] \hfill \\
+	Accurate to within about $2.1 \times 10^{-10}$\\
+	Power series uses 37 terms.
+	\item[$x=21\pi/2$] \hfill \\
+	Accurate to within about $1.3 \times 10^{-4}$ About 0.013\%\\
+	Power series uses 60 terms.
+	\item[$x=31\pi/2$] \hfill \\
+	Off by a factor of 3. Terribly inaccurate.\\
+	Power series uses 78 terms.
+\end{description}
+
+Power series can be used to accurately approximate functions on a small interval. The error increases quickly when the interval grows and more terms are needed. For a repeating function like $sin(x)$ this can fixed normalizing the value to a fixed range $[0,2\pi]$.
+
+\end{document}
