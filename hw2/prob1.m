@@ -1,12 +1,12 @@
 
-Ns = [128, 256, 512];%,1024, 2048]; %4096
+Ns = [128, 256, 512,1024, 2048, 4096];
 M = zeros(numel(Ns), 5);
 
-for i = numel(Ns)
+for i = 1:numel(Ns)
 	n = Ns(i);
 	A = magic(n);
 	x = ones(n, 1);
-
+    
 	%Using a pair of nested loops that access the matrix entries in column major order
 	tic
 	b = MatVecProd_a(A,x);
@@ -33,4 +33,14 @@ for i = numel(Ns)
 	M(i, 5) = toc;
 end
 
-plot(M);
+loglog(Ns, M, '-o');
+title('Matrix vector product - Performace comparison');
+axis([128 Ns(end) min(M(:))/2 max(M(:))*2]);
+
+set(gca,'XTick', Ns);
+set(gca,'xticklabels',{'2^7', '2^8', '2^9', '2^{10}', '2^{11}', '2^{12}'});
+
+xlabel('N (Size of matrix)') % x-axis label
+ylabel('Time in seconds') % y-axis label
+
+legend('MatVecProd\_a','MatVecProd\_b','MatVecProd\_c','MatVecProd\_d', 'Matlab operator *', 'Location','southeast');
