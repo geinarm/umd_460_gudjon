@@ -1,4 +1,5 @@
-
+%% Test mydet
+% Set of test matices
 TestSet = cell(1, 5);
 TestSet{1} = [1 -3 1; 2 -8 -15; -6 3 -15];
 TestSet{2} = magic(3);
