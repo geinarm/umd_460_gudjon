@@ -1,7 +1,8 @@
 
 p = @(x) (816.*x.^3) - (3835.*x.^2) + (6000.*x) - 3125;
 
-t = 1:0.01:2;
+%t = 1:0.01:2;
+t = 1.43:0.01:1.71;
 y = p(t);
 plot(t, y, 'color', 'blue'); hold on;
 
@@ -11,8 +12,8 @@ k=1;
 
 fprintf('X_%i: %3.15f \n', 0, xprev);
 fprintf('X_%i: %3.15f \n', 1, x);
-plot(x, p(x), '.', 'color', 'green', 'MarkerSize', 12);
-plot(xprev, p(xprev), '.', 'color', 'green', 'MarkerSize', 12);
+%plot(x, p(x), '.', 'color', 'green', 'MarkerSize', 12);
+%plot(xprev, p(xprev), '.', 'color', 'green', 'MarkerSize', 12);
 %while abs(x-xprev) > eps*abs(x)
 while abs(p(x)) > eps
     sn = (p(x)-p(xprev))/(x-xprev);
@@ -26,3 +27,6 @@ while abs(p(x)) > eps
 end
 
 plot(x, p(x), '.', 'color', 'red', 'MarkerSize', 15);
+axis tight;
+
+hold off;

@@ -1,8 +1,8 @@
-format LONG;
+
 p = @(x) (816.*x.^3) - (3835.*x.^2) + (6000.*x) - 3125;
 p_prime = @(x) (2448.*x.^2) - (7670.*x) + 6000;
 
-t = 1.35:0.01:1.6;
+t = 1.416:0.01:1.71;
 y = p(t);
 plot(t, y, 'color', 'blue'); hold on;
 
@@ -20,4 +20,6 @@ while abs(x - xprev) > eps*abs(x)
 end
 
 plot(x, p(x), '.', 'color', 'red', 'MarkerSize', 15);
-ylim([-2, 0.5]);
+axis tight;
+
+hold off;

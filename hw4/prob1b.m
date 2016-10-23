@@ -9,3 +9,5 @@ x_zero = [25/17, 25/16, 5/3];
 plot(x, y, 'color', 'blue'); hold on;
 plot(x_zero, p(x_zero), '.', 'color', 'red', 'MarkerSize', 15);
 axis tight;
+
+hold off;

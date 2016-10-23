@@ -1,7 +1,7 @@
 
 p = @(x) (816.*x.^3) - (3835.*x.^2) + (6000.*x) - 3125;
 
-t = 1:0.01:2;
+t = 1.25:0.01:1.71;
 y = p(t);
 plot(t, y, 'color', 'blue'); hold on;
 
@@ -23,3 +23,5 @@ while b-a > eps
 end
 
 plot(x, p(x), '.', 'color', 'red', 'MarkerSize', 15);
+axis tight;
+hold off;
