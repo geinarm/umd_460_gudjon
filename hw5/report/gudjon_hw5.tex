@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[]{mcode}
+\usepackage{mwe}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+
+
+\DeclareMathOperator{\erf}{erf}
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\begin{document}
+
+\title{CMSC 460 - HW5}
+\author{Gudjon Einar Magnusson}
+
+\maketitle
+
+%% 5.5
+%x = (9,2,6)
+\section{}
+
+%(a) housholder reflection and gibbins rotation
+% Hx = (11,0,0)
+\subsection{} %a
+$Hx = [11, 0, 0]^T$
+\[
+H =  
+\begin{bmatrix}
+    0.8182 & 0.1818 & 0.5455 \\
+    0.1818 & 0.8182 & -0.5455 \\
+    0.5455 & -0.5455 & -0.6364    
+\end{bmatrix}
+\]
+
+\[
+G =  
+\begin{bmatrix}
+    0.8182 & 0.1818 & 0.5455
+   -0.2169 & 0.9762 & 0
+    0.5325 & 0.1183 & -0.8381
+\end{bmatrix}
+\]
+
+% find u,v s.t Hu = -u, Hv = v
+\subsection{} %b
+H =  
+\[
+u =  
+\begin{bmatrix}
+    -1 \\
+    0 \\
+    0
+\end{bmatrix}
+\]
+
+\[
+v =  
+\begin{bmatrix}
+    1 \\
+    0 \\
+    0
+\end{bmatrix}
+\]
+
+%% 5.7
+\section{}
+
+\subsection{} %a
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+0.063453588234033
+0.004995371926206
+0.001207415588186
+0.000033019971295
+0.000018070462486
+0.000000475384154
+0.000000183691807
+0.000000006592424
+0.000000000604409
+0.000000000000000
+\end{lstlisting}
+\end{minipage}
+
+\subsection{} %b
+
+\subsection{} %c
+
+
+%% 5.8
+\section{}
+
+%% 5.11
+\section{}
+
+\end{document}
