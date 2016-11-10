@@ -1,0 +1,19 @@
+load longley.dat;
+
+X = longley;
+for i=1:7
+   x = X(:, i);
+   mu = mean(x);
+   sigma = std(x);
+   X(:,i) = (x-mu) ./ sigma;
+end
+
+plot(1:16, X);
+axis tight;
+legend({'Total Derived Employment',...
+    'GNP Implicit Price Deflater',...
+    'Gross National Product',...
+    'Unemployment',...
+    'Size of Armed Forces',...
+    'Noninstitutional Population Age 14 and Over',...
+    'Year'}, 'Location', 'southeast');

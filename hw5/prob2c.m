@@ -2,24 +2,18 @@
 t = (((1:11)-1)/10)';
 y = erf(t);
 
-n = 11;
+n = 5;
 X = ones(11, n);
-for k = 1:n-1
-   X(:, k) = t.^((2*n)-(2*k-1));
+for k = 2:n
+   z = 1./(1+t);
+   X(:, k) = exp(-t.^2) .* z.^(n-k);
 end
 X(:, n) = ones(size(t));
 
 plot(t, y, 'o'); hold on;
-err = zeros(1,n-1);
-for i = 1:n-1
-    b = X(:, end-i:end)\y;
-    pt = polyval(b, t);
-    err(i) = max(pt - y);
-    %plot(0:0.01:1, pt);
-end
-hold off;
+b = X\y;
+pt = X*b;
+err = max(pt - y)
+plot(t, pt);
 
-semilogy(1:n-1, err, '-o');
-axis tight;
-xlabel('Polynomial degree');
-ylabel('Maximum error');
+hold off;

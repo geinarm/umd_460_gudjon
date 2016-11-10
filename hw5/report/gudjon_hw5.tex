@@ -95,4 +95,64 @@ v =
 %% 5.11
 \section{}
 
+\subsection{} %a
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+    load longley.dat;
+    y = longley(:,1);
+    X = longley(:,2:7);
+
+    [m, ~] = size(X);
+    X = [ones(m,1),X];
+
+    b = X\y;
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+    1.0e+06 *
+      -3.482258634593715
+       0.000015061872271
+      -0.000000035819179
+      -0.000002020229804
+      -0.000001033226867
+      -0.000000051104106
+       0.001829151464612
+\end{lstlisting}
+\end{minipage}
+
+\subsection{} %b
+beta(0)    -3482258.63459582
+beta(1)    15.0618722713733
+beta(2)    -0.358191792925910E-01
+beta(3)    -2.02022980381683
+beta(4)    -1.03322686717359
+beta(5)    -0.511041056535807E-01
+beta(6)    1829.15146461355
+
+\subsection{} %c
+%errorbar
+
+\subsection{} %d
+There is a strong corelation between unemployment and the size of armed forces.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+[R,P,RLO,RUP]=corrcoef(X);
+
+P =
+    1.0000    0.0000    0.0103    0.0697    0.0000    0.0000
+    0.0000    1.0000    0.0132    0.0830    0.0000    0.0000
+    0.0103    0.0132    1.0000    0.5109    0.0033    0.0047
+    0.0697    0.0830    0.5109    1.0000    0.1652    0.1078
+    0.0000    0.0000    0.0033    0.1652    1.0000    0.0000
+    0.0000    0.0000    0.0047    0.1078    0.0000    1.0000
+\end{lstlisting}
+\end{minipage}
+
+\subsection{} %e
+
+
 \end{document}
