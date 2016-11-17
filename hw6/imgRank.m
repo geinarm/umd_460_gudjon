@@ -13,7 +13,7 @@ sigma = diag(S);
 %pause
 
 E = zeros(size(I));
-for k = 1:100
+for k = 1:540
     E = E + sigma(k)*U(:,k)*V(:,k)';
 end
 E = reshape(E, m, n, 3);
