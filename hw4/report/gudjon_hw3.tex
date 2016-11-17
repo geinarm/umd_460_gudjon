@@ -49,7 +49,7 @@ Newtons method finds a zero in 11 iterations. It finds the zero at $x = \frac{25
 
 Below are values of $x_i$ where $i$ is the iteration. 
 
-\begin{minipage}{\linewidth}
+\begin{minipage}{\linewidth} 
 \begin{lstlisting}
 X_0:  1.500000000000000
 X_1:  1.416666666666667
@@ -228,10 +228,10 @@ x = 32.956389039822476
 %60 days’ exposure under these conditions.
 \section{}
 
-Since every thing is given except the depth I can rewrite the formula to get the temperature as a function of depth. 
-$T(x) = 35\erf(\frac{x}{2\sqrt{\alpha t}}) - 15$. We want to know at what depth is the temperature equal to zero. To find zero I used \textit{fzerotx} on the function $T$ and the interval $[0, 5]$. I picked 5 arbitrary based on my intuition.
+Since every thing is given except the depth, I can rewrite the formula to get the temperature as a function of depth. 
+$T(x) = 35\erf(\frac{x}{2\sqrt{\alpha t}}) - 15$. We want to know at what depth is the temperature equal to zero. To find zero I used \textit{fzerotx} on the function $T$ and the interval $[0, 5]$. I picked 5 arbitrarily based on my intuition, I don't think even the coldest parts of Siberia freeze down to 5 meters.
 
-$T(x) = 0, x = 0.946280996267692$. About 95cm.
+According to \textit{fzerotx}, $T(x) = 0$ where $x = 0.946280996267692$. About 95cm.
 
 
 \end{document}

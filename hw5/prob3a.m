@@ -7,7 +7,7 @@ y = [ 5.0291 6.5099 5.3666 4.1272 4.2948
 y = y';
 y = y(:);
 
-plot(t, y, 'color', 'blue'); hold on;
+plot(t, y, 'o', 'color', 'blue'); hold on;
 
 A = ones(numel(t), 2);
 A(:, 1) = t;

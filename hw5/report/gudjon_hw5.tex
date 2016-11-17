@@ -24,7 +24,9 @@
 %(a) housholder reflection and gibbins rotation
 % Hx = (11,0,0)
 \subsection{} %a
-$Hx = [11, 0, 0]^T$
+$x = [9, 2, 6]^T$ 
+
+$H$ is a Householder reflection matrix that gives $Hx = [11, 0, 0]^T$.
 \[
 H =  
 \begin{bmatrix}
@@ -34,18 +36,18 @@ H =
 \end{bmatrix}
 \]
 
+$G$ is a Givens rotation matrix that gives $Gx = [11, 0, 0]^T$
 \[
 G =  
 \begin{bmatrix}
-    0.8182 & 0.1818 & 0.5455
-   -0.2169 & 0.9762 & 0
+    0.8182 & 0.1818 & 0.5455 \\
+   -0.2169 & 0.9762 & 0 \\
     0.5325 & 0.1183 & -0.8381
 \end{bmatrix}
 \]
 
 % find u,v s.t Hu = -u, Hv = v
 \subsection{} %b
-H =  
 \[
 u =  
 \begin{bmatrix}
@@ -69,49 +71,113 @@ v =
 
 \subsection{} %a
 
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-0.063453588234033
-0.004995371926206
-0.001207415588186
-0.000033019971295
-0.000018070462486
-0.000000475384154
-0.000000183691807
-0.000000006592424
-0.000000000604409
-0.000000000000000
-\end{lstlisting}
-\end{minipage}
+Figure \ref{fig_2a_err} shows that the error drops quickly as the polynomial degree increases.
+
+\begin{figure}
+    \includegraphics[width=0.6\linewidth]{plot_err}
+    \centering
+    \caption{}
+    \label{fig_2a_err}
+\end{figure}
 
 \subsection{} %b
 
+Figure \ref{fig_2b_err} shows that the error grows quickly as the polynomial degree increases. This happens because the polynomial oscillates wildly around the true value.
+
+\begin{figure}
+    \includegraphics[width=0.6\linewidth]{odd_plot_err}
+    \centering
+    \caption{}
+    \label{fig_2b_err}
+\end{figure}
+
 \subsection{} %c
+
+This gives a very good approximation.
 
 
 %% 5.8
 \section{}
 
-%% 5.11
-\section{}
-
 \subsection{} %a
 
+Figure \ref{fig_3a_plot} shows the straight line fitted through the data points. Figure \ref{fig_3a_r} shows the residual for each point. The 7th point has a notable larger residual than the rest of the data.
+
+\begin{figure}[t!]
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3a}
+        \caption{}
+        \label{fig_3a_plot}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3a_r}
+        \caption{}
+        \label{fig_3a_r}
+    \end{subfigure}
+    \caption{}
+    \label{fig_3a}
+\end{figure}
+
+\subsection{} %b
+
+Figure \ref{fig_3b_plot} shows the straight line fitted through the data points with the 7th point excluded. Figure \ref{fig_3b_r} shows the residual for each point. The error is now mostly uniform.
+
+\begin{figure}[t!]
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3b}
+        \caption{}
+        \label{fig_3b_plot}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3b_r}
+        \caption{}
+        \label{fig_3b_r}
+    \end{subfigure}
+    \caption{}
+    \label{fig_3b}
+\end{figure}
+
+\subsection{} %c
+
+Figure \ref{fig_3c_plot} shows the curve line fitted through the data points with the 7th point excluded. Figure \ref{fig_3c_r} shows the residual for each point. The error is now much smaller but less uniform.
+
+\begin{figure}[t!]
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3c}
+        \caption{}
+        \label{fig_3c_plot}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{plot_3c_r}
+        \caption{}
+        \label{fig_3c_r}
+    \end{subfigure}
+    \caption{}
+    \label{fig_3c}
+\end{figure}
+
+%% 5.11
+\section{} %3
+
+\subsection{} %a
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-    load longley.dat;
-    y = longley(:,1);
-    X = longley(:,2:7);
+load longley.dat;
+y = longley(:,1);
+X = longley(:,2:7);
 
-    [m, ~] = size(X);
-    X = [ones(m,1),X];
+[m, ~] = size(X);
+X = [ones(m,1),X];
+b = X\y;
 
-    b = X\y;
-\end{lstlisting}
-\end{minipage}
 
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
+b =    
     1.0e+06 *
       -3.482258634593715
        0.000015061872271
@@ -124,19 +190,22 @@ v =
 \end{minipage}
 
 \subsection{} %b
-beta(0)    -3482258.63459582
-beta(1)    15.0618722713733
-beta(2)    -0.358191792925910E-01
-beta(3)    -2.02022980381683
-beta(4)    -1.03322686717359
-beta(5)    -0.511041056535807E-01
-beta(6)    1829.15146461355
+
+My values of b match the certified values within a very small error.
 
 \subsection{} %c
-%errorbar
+
+Figure \ref{fig_4c} show the value of $y$ according the fitted model. Vertical bars represent the error at each point.
+
+\begin{figure}
+    \includegraphics[width=0.6\linewidth]{plot_4c}
+    \centering
+    \caption{}
+    \label{fig_4c}
+\end{figure}
 
 \subsection{} %d
-There is a strong corelation between unemployment and the size of armed forces.
+There is a strong correlation between unemployment and the size of armed forces.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
@@ -154,5 +223,13 @@ P =
 
 \subsection{} %e
 
+Figure \ref{fig_4e} plots the normalized value of each of the 7 variables.
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{plot_4e}
+    \centering
+    \caption{}
+    \label{fig_4e}
+\end{figure}
 
 \end{document}

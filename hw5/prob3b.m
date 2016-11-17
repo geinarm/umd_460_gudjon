@@ -11,7 +11,7 @@ y = y(:);
 t(7) = [];
 y(7) = [];
 
-plot(t, y, 'color', 'blue'); hold on;
+plot(t, y, 'o', 'color', 'blue'); hold on;
 
 A = ones(numel(t), 2);
 A(:, 1) = t;

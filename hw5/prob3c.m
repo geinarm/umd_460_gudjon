@@ -11,7 +11,8 @@ y = y(:);
 t(7) = [];
 y(7) = [];
 
-plot(t, y, 'color', 'blue'); hold on;
+plot(t, y, 'o', 'color', 'blue'); hold on;
+plot(7, 12.5140, '*', 'color', 'blue'); hold on;
 
 A = ones(numel(t), 3);
 A(:, 1) = sin(t);
@@ -24,7 +25,6 @@ plot(plot_t, plot_pt, 'color', 'red');
 hold off;
 
 pause
-
 pt = b(1)*sin(t)+b(2).*t+b(3);
 r = abs(pt' - y);
 plot(t, r);
